@@ -16,6 +16,12 @@
  
   #nvim 
   home.file.".config/nvim/init.lua".source = ../nvim/init.lua;
+
+  #waybar settins 
+  home.file.".config/waybar" = {
+    source = ./waybar;
+    recursive = true;
+  };
   #git settings 
 programs.git = {
     enable = true; 
