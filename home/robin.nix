@@ -28,11 +28,11 @@
 programs.git = {
     enable = true; 
 
-    userName = "robin";
-    userEmail = "robinmogha@outlook.com";
+    settings.user.name = "robin";
+    settings.user.email = "robinmogha@outlook.com";
 
     #core defaults 
-    extraConfig = {
+    settings = {
       init.defaultBranch = "main"; 
 
       pull.rebase = true; 
@@ -159,4 +159,7 @@ programs.tmux = {
   '';
 };
 
+  home.packages = with pkgs; [
+    fastfetch 
+  ];
 }
