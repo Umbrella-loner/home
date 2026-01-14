@@ -308,7 +308,7 @@ packages = with pkgs; [
  enable = true;
  defaultFonts = {
         monospace = [ "DejaVu Sans Mono" ];
-        sansSerif = [ "DejaVu Sans" ];
+        sansSerif = [ "Cantarell" ];
         serif = [ "Dejavu Serif" ];
    };
    };
