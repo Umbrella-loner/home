@@ -18,6 +18,14 @@ virtualisation.spiceUSBRedirection.enable = true;
 programs.virt-manager.enable = true;
 zramSwap.enable = true;
 
+  #showing password feedback 
+
+  security.sudo = { 
+  enable = true;
+  extraConfig = ''
+      Defaults pwfeedback
+    '';
+  };
 #specialzations for my nixos 
 specialisation.lqx.configuration = {
     system.nixos.tags = [ "lqx" ];
