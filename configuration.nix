@@ -250,7 +250,8 @@ git
 terraform
 ffmpegthumbnailer
 xfce.tumbler 
-    mpv
+    mpv 
+swww
 lm_sensors
 libnotify
 xfce.thunar
