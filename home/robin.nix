@@ -10,6 +10,37 @@
     gtk.enable = true;
   };
 
+  #symlinks 
+  #nirii 
+  home.file.".config/niri/config.kdl".source = ../niri/config.kdl;
+ 
+  #nvim 
+  home.file.".config/nvim/init.lua".source = ../nvim/init.lua;
+  #git settings 
+programs.git = {
+    enable = true; 
+
+    userName = "robin";
+    userEmail = "robinmogha@outlook.com";
+
+    #core defaults 
+    extraConfig = {
+      init.defaultBranch = "main"; 
+
+      pull.rebase = true; 
+      rebase.autosearch = true;
+
+      fetch.prune = true;
+
+      core.editor = "nvim";
+      core.pager = "less -FRSX"; 
+
+      color.ui = true;
+    };
+  };
+    
+  #tmux config
+
   #zsh-block
   programs.zsh = {
     enable = true;
@@ -30,7 +61,7 @@
     shellAliases = {
     aria = "aria2c -x16 -s16";
     vid = "yt-dlp --cookies-from-browser chrome";
-    nrs = "sudo nixos-rebuild switch --flake /etc/nixos";
+    nrs = "sudo nixos-rebuild switch --flake /home/robin/nixos#doc";
     nconf = "sudoedit /etc/nixos/configuration.nix";
     nfk = "sudoedit /etc/nixos/flake.nix";
   };

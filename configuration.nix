@@ -215,6 +215,7 @@ programs.nix-index.enable = true;
   environment.systemPackages = with pkgs; [
 git
 terraform
+lm_sensors
 libnotify
 xfce.thunar
 nerd-fonts.iosevka
