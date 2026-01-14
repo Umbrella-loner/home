@@ -301,15 +301,17 @@ aria2
 fonts = {
 packages = with pkgs; [
  nerd-fonts.jetbrains-mono
+ cantarell-fonts 
+ jetbrains-mono
  nerd-fonts.fira-code
  nerd-fonts.iosevka
  ];
  fontconfig = {
  enable = true;
  defaultFonts = {
-        monospace = [ "DejaVu Sans Mono" ];
+        monospace = [ "JetBrains Mono" ];
         sansSerif = [ "Cantarell" ];
-        serif = [ "Dejavu Serif" ];
+        serif = [ "Noto Serif" ];
    };
    };
    };
