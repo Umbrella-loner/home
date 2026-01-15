@@ -249,12 +249,12 @@ programs.nix-index.enable = true;
 git
 terraform
 ffmpegthumbnailer
-xfce.tumbler 
-    mpv 
+pkgs.tumbler 
+mpv 
 swww
 lm_sensors
 libnotify
-xfce.thunar
+pkgs.thunar
 nerd-fonts.iosevka
 cliphist
 evince
