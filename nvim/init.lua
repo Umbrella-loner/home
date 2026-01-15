@@ -15,21 +15,6 @@ require("lazy").setup({
   -- Themes
   -- ───────────────────────────────────────────────────────────────────────────
 
-  -- TokyoNight
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("tokyonight").setup({
-        transparent = true,
-        styles = {
-          sidebars = "transparent",
-          floats = "transparent",
-        },
-      })
-    end,
-  },
 
   -- Nightfox (Carbonfox)
   {
@@ -38,7 +23,7 @@ require("lazy").setup({
     config = function()
       require("nightfox").setup({
         options = {
-          transparent = true,
+          transparent = false,
         },
       })
       -- Default theme (change if you want)
@@ -120,19 +105,6 @@ vim.opt.smartindent = true
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
 
--- ─────────────────────────────────────────────────────────────────────────────
--- Transparency (GLOBAL)
--- ─────────────────────────────────────────────────────────────────────────────
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-
--- NvimTree transparency
-vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { bg = "none" })
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- Treesitter Configuration
@@ -209,9 +181,14 @@ require("lualine").setup({
   options = {
     theme = "auto",
     icons_enabled = true,
+    globalstatus = true, 
+    section_separators = "", 
+    component_separators = "",
   },
 })
 
+vim.opt.laststatus = 3
+vim.opt.cmdheight = 1
 -- ─────────────────────────────────────────────────────────────────────────────
 -- Git Signs
 -- ─────────────────────────────────────────────────────────────────────────────

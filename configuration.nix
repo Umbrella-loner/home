@@ -188,11 +188,6 @@ boot.kernelParams = [
 ];
 
 
-  #homemanager
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-
-  home-manager.users.robin = import ./home/robin.nix;
 
 #flakes-setting
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -257,26 +252,15 @@ git
 terraform
 distrobox
 ffmpegthumbnailer
-pkgs.tumbler 
-mpv 
-swww
 lm_sensors
 libnotify
 wineWowPackages.stable 
 winetricks
-pkgs.thunar
 nerd-fonts.iosevka
 cliphist
-evince
-ps_mem
 zen-browser.packages.${pkgs.system}.default
 glib
 gsettings-desktop-schemas
-obs-studio
-obs-studio-plugins.wlrobs
-obs-studio-plugins.obs-pipewire-audio-capture
-obs-studio-plugins.obs-vkcapture
-blender
 gcc 
 zip
 file
@@ -307,38 +291,24 @@ tldr
 clang
 clang-tools
 gnumake
-bibata-cursors
 cmake
 gdb
 rofi
-firefox
 kubectl
 vim
 curl 
 wget 
 unzip 
-vlc
 neovim
 gammastep
 curl
-brave
-google-chrome
-hyprpaper
-alacritty
-protonvpn-gui
-firefox
 adwaita-icon-theme
-grim
-slurp
 docker
 tmux
 swaynotificationcenter
 wl-clipboard
 brightnessctl
 networkmanagerapplet
-blueman
-waybar
-swayosd
 nerd-fonts.jetbrains-mono
 nerd-fonts.fira-code
 aria2

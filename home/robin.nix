@@ -1,8 +1,12 @@
-{ pkgs, ...}:
+{ config, pkgs, ...}:
 
 
 {
+home.username = "robin";
+home.homeDirectory = "/home/robin";
+
   home.stateVersion = "25.11";
+  programs.home-manager.enable = true;
   #cursor-thing-dont-forget
   home.pointerCursor = {
     name = "Adwaita";
@@ -79,6 +83,7 @@ programs.git = {
     nrs = "sudo nixos-rebuild switch --flake /home/robin/nixos#doc";
     nconf = "nvim /home/robin/nixos/configuration.nix";
     nfk = "nvim /home/robin/nixos/flake.nix";
+    hrs = "home-manager switch --flake /home/robin/nixos#robin";
   };
 
     initContent = ''
@@ -170,6 +175,28 @@ programs.tmux = {
     fastfetch 
     direnv 
     nix-direnv
+    obs-studio 
+obs-studio-plugins.wlrobs
+obs-studio-plugins.obs-pipewire-audio-capture
+obs-studio-plugins.obs-vkcapture
+    blender
+    brave
+    google-chrome
+    pkgs.thunar 
+    pkgs.tumbler 
+    evince 
+    ps_mem
+    mpv
+    alacritty 
+    protonvpn-gui
+    grim 
+    slurp 
+    blueman 
+    swayosd 
+ffmpegthumbnailer
+    rofi
+    hyprpaper
+    waybar
     openssl
     cloud-utils
   ];

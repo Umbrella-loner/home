@@ -34,4 +34,5 @@ cyan = "#55FFFF"
 white = "#FFFFFF"
 
 [window]
-opacity = 0.70
+dynamic_padding = false 
+padding = { x = 2, y = 2 }
