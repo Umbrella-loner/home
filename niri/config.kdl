@@ -22,6 +22,9 @@ output "eDP-1" {
     scale 1.0
 }
 
+animations { 
+  slowdown 1.0
+}
 
 environment {
     GTK_THEME "Adwaita:dark"
@@ -29,28 +32,6 @@ environment {
     XCURSOR_THEME "Adwaita";
     XCURSOR_SIZE "27"
 }
-animations {
-    slowdown 1.0
-    
-    horizontal-view-movement {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    }
-    
-    window-movement {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    }
-    
-    window-resize {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    }
-    
-    config-notification-open-close {
-        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
-    }
-}
-
-
-
 
 layout {
     gaps 0
