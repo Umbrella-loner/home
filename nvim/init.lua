@@ -1,4 +1,3 @@
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -15,21 +14,32 @@ require("lazy").setup({
   -- Themes
   -- ───────────────────────────────────────────────────────────────────────────
 
-
-  -- Nightfox (Carbonfox)
   {
-    "EdenEast/nightfox.nvim",
+    "folke/tokyonight.nvim",
     priority = 1000,
     config = function()
-      require("nightfox").setup({
-        options = {
-          transparent = false,
+      require("tokyonight").setup({
+        style = "night", -- Options: storm, moon, night, day
+        transparent = false,
+        terminal_colors = true,
+        styles = {
+          comments = { italic = true },
+          keywords = { italic = true },
+          functions = {},
+          variables = {},
+          sidebars = "dark",
+          floats = "dark",
         },
+        sidebars = { "qf", "help", "terminal", "packer" },
+        day_brightness = 0.3,
+        hide_inactive_statusline = false,
+        dim_inactive = false,
+        lualine_bold = false,
       })
-      -- Default theme (change if you want)
-      vim.cmd.colorscheme("carbonfox")
+      vim.cmd.colorscheme("tokyonight-night")
     end,
   },
+
 
   -- ───────────────────────────────────────────────────────────────────────────
   -- File Explorer
@@ -84,7 +94,6 @@ require("lazy").setup({
   -- ───────────────────────────────────────────────────────────────────────────
   -- Statusline
   -- ───────────────────────────────────────────────────────────────────────────
-  { "nvim-lualine/lualine.nvim" },
 
   -- ───────────────────────────────────────────────────────────────────────────
   -- Copilot
@@ -175,29 +184,65 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- ─────────────────────────────────────────────────────────────────────────────
--- Statusline
+-- Git Signs
 -- ─────────────────────────────────────────────────────────────────────────────
-require("lualine").setup({
-  options = {
-    theme = "auto",
-    icons_enabled = true,
-    globalstatus = true, 
-    section_separators = "", 
-    component_separators = "",
+require("gitsigns").setup({
+  signs = {
+    add          = { text = '│' },
+    change       = { text = '│' },
+    delete       = { text = '_' },
+    topdelete    = { text = '‾' },
+    changedelete = { text = '~' },
+    untracked    = { text = '┆' },
   },
 })
 
-vim.opt.laststatus = 3
-vim.opt.cmdheight = 1
 -- ─────────────────────────────────────────────────────────────────────────────
--- Git Signs
+-- NvimTree with Tokyo Night styling
 -- ─────────────────────────────────────────────────────────────────────────────
-require("gitsigns").setup()
-
--- ─────────────────────────────────────────────────────────────────────────────
--- NvimTree
--- ─────────────────────────────────────────────────────────────────────────────
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+    icons = {
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+      glyphs = {
+        default = "",
+        symlink = "",
+        folder = {
+          arrow_closed = "",
+          arrow_open = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = "",
+        },
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "",
+          ignored = "◌",
+        },
+      },
+    },
+  },
+  filters = {
+    dotfiles = false,
+  },
+})
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- Keymaps
