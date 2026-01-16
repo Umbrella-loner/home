@@ -24,6 +24,12 @@ home.homeDirectory = "/home/robin";
 
   #alacritty 
   home.file.".config/alacritty/alacritty.toml".source = ./alacritty/alacritty.toml;
+
+  #hyprland 
+  home.file.".config/hypr" = {
+    source = ./hypr; 
+    recursive = true;
+  };
   #waybar settins 
   home.file.".config/waybar" = {
     source = ./waybar;
@@ -84,6 +90,7 @@ programs.git = {
     nconf = "nvim /home/robin/nixos/configuration.nix";
     nfk = "nvim /home/robin/nixos/flake.nix";
     hrs = "home-manager switch --flake /home/robin/nixos#robin";
+    hconf = "nvim /home/robin/nixos/home/robin.nix";
   };
 
     initContent = ''
@@ -186,6 +193,7 @@ obs-studio-plugins.obs-vkcapture
     pkgs.tumbler 
     evince 
     ps_mem
+    vscode 
     mpv
     alacritty 
     protonvpn-gui

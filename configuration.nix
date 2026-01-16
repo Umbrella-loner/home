@@ -18,7 +18,6 @@ programs.virt-manager.enable = true;
 zramSwap.enable = true;
 
   #showing password feedback 
-
   security.sudo = { 
   enable = true;
   extraConfig = ''
@@ -98,6 +97,12 @@ services.logind.settings.Login = {
   HandleLidSwitchExternalPower = "ignore";
 };
 
+  #hyprland 
+
+  programs.hyprland = { 
+    enable = true; 
+    xwayland.enable = true;
+  };
   #virtualization podman 
   virtualisation.podman = { 
     enable = true; 
@@ -151,12 +156,13 @@ programs.appimage.binfmt = true;
 programs.niri.enable = true;
 
 # xdg-desktop-portal (correct option name)
-xdg.portal = {
-  enable = true;
-  extraPortals = [
-    pkgs.xdg-desktop-portal-gtk
-  ];
-};
+  xdg.portal = { 
+    enable = true;
+    extraPortals = with pkgs; [ 
+      xdg-desktop-portal-hyprland 
+      xdg-desktop-portal-gtk
+    ];
+  };
 
 services.openssh = {
   enable = true;
@@ -259,6 +265,7 @@ libnotify
 wineWowPackages.stable 
 winetricks
 nerd-fonts.iosevka
+bc
 cliphist
 zen-browser.packages.${pkgs.system}.default
 glib
