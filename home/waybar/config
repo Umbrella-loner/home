@@ -5,7 +5,7 @@
     "margin": 0,
     "spacing": 10,
 
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": ["niri/workspaces"],
     "modules-center": ["clock"],
 "modules-right": ["tray", "network", "bluetooth", "battery"],
 

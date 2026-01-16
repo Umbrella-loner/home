@@ -183,11 +183,42 @@ programs.tmux = {
     direnv 
     nix-direnv
     obs-studio 
-obs-studio-plugins.wlrobs
-obs-studio-plugins.obs-pipewire-audio-capture
-obs-studio-plugins.obs-vkcapture
+    obs-studio-plugins.wlrobs
+    obs-studio-plugins.obs-pipewire-audio-capture
+    obs-studio-plugins.obs-vkcapture
     blender
     brave
+    zip
+    file
+    tree
+    less
+    ripgrep
+    fd
+    bat
+    eza
+    neovim
+    gammastep
+    swaynotificationcenter
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    htop
+    ncdu
+    lsof
+    strace
+    yazi
+    p7zip
+    rar
+    nmap
+    netcat
+    rsync
+    jq
+    openssh
+    yq
+    man-pages
+    man-pages-posix
+    fzf
+    zoxide
+    tldr
     google-chrome
     pkgs.thunar 
     pkgs.tumbler 
@@ -201,7 +232,7 @@ obs-studio-plugins.obs-vkcapture
     slurp 
     blueman 
     swayosd 
-ffmpegthumbnailer
+    ffmpegthumbnailer
     rofi
     hyprpaper
     waybar

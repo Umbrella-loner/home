@@ -25,6 +25,8 @@ zramSwap.enable = true;
     '';
   };
 
+#niri download 
+programs.niri.enable = true;
   #allow libvirt networking 
   networking.firewall = { 
     enable = true; 
@@ -108,12 +110,6 @@ services.logind.settings.Login = {
   HandleLidSwitchExternalPower = "ignore";
 };
 
-  #hyprland 
-
-  programs.hyprland = { 
-    enable = true; 
-    xwayland.enable = true;
-  };
   #virtualization podman 
   virtualisation.podman = { 
     enable = true; 
@@ -256,10 +252,13 @@ programs.nix-index.enable = true;
 
 direnv
 nix-direnv
+llvm
 git
 yt-dlp
 terraform
+python3
 distrobox
+lldb
 ffmpegthumbnailer
 lm_sensors
 libnotify
@@ -272,32 +271,6 @@ zen-browser.packages.${pkgs.system}.default
 glib
 gsettings-desktop-schemas
 gcc 
-zip
-file
-tree
-less
-ripgrep
-fd
-bat
-eza
-htop
-ncdu
-lsof
-strace
-yazi
-p7zip
-rar
-nmap
-netcat
-rsync
-jq
-openssh
-yq
-man-pages
-man-pages-posix
-fzf
-zoxide
-tldr
 clang
 clang-tools
 gnumake
@@ -309,18 +282,13 @@ vim
 curl 
 wget 
 unzip 
-neovim
-gammastep
 curl
 adwaita-icon-theme
 docker
 tmux
-swaynotificationcenter
 wl-clipboard
 brightnessctl
 networkmanagerapplet
-nerd-fonts.jetbrains-mono
-nerd-fonts.fira-code
 aria2
   ];
 

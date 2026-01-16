@@ -52,19 +52,31 @@ require("lazy").setup({
   -- ───────────────────────────────────────────────────────────────────────────
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
+  { 
+    "ThePrimeagen/harpoon", 
+    branch = "harpoon2", 
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
   -- ───────────────────────────────────────────────────────────────────────────
   -- Treesitter
   -- ───────────────────────────────────────────────────────────────────────────
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = function()
-      if vim.fn.executable("cc") == 1
-        or vim.fn.executable("gcc") == 1
-        or vim.fn.executable("clang") == 1 then
-        vim.cmd("TSUpdate")
-      end
-    end
-  },
+
+-- In your lazy.setup section
+
+{
+  "nvim-treesitter/nvim-treesitter",
+  event = { "BufReadPost", "BufNewFile" },
+  cmd = { "TSInstall", "TSUpdate", "TSUpdateSync" },
+  build = ":TSUpdate",
+  config = function()
+    require("nvim-treesitter.config").setup({
+      ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+      auto_install = true,
+      highlight = { enable = true },
+      indent = { enable = true },
+    })
+  end,
+},
 
   -- ───────────────────────────────────────────────────────────────────────────
   -- LSP
@@ -115,20 +127,6 @@ vim.opt.termguicolors = true
 vim.g.mapleader = " "
 
 
--- ─────────────────────────────────────────────────────────────────────────────
--- Treesitter Configuration
--- ─────────────────────────────────────────────────────────────────────────────
-local has_compiler =
-  vim.fn.executable("cc") == 1
-  or vim.fn.executable("gcc") == 1
-  or vim.fn.executable("clang") == 1
-
-require("nvim-treesitter.configs").setup({
-  ensure_installed = has_compiler and { "c", "lua", "vim", "vimdoc", "query" } or {},
-  auto_install = has_compiler,
-  highlight = { enable = true },
-  indent = { enable = true },
-})
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- LSP Configuration
@@ -250,3 +248,40 @@ require("nvim-tree").setup({
 vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>f", ":Telescope find_files<CR>")
 vim.keymap.set("n", "<leader>g", ":Telescope live_grep<CR>")
+
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- Harpoon Keymaps
+-- ─────────────────────────────────────────────────────────────────────────────
+local harpoon = require("harpoon")
+harpoon:setup()
+
+-- Add current file to harpoon
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+
+-- Open harpoon menu (see all marked files)
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+-- Jump to specific files
+vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
+
+-- Navigate through harpoon list
+vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- LSP Keymaps
+-- ─────────────────────────────────────────────────────────────────────────────
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to declaration' })
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'Find references' })
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = 'Go to implementation' })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover documentation' })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code action' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
