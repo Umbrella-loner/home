@@ -230,12 +230,8 @@ services.flatpak.enable = true;
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
-direnv
-nix-direnv
-llvm
 git
-yt-dlp
-terraform
+steam-run
 python3
 distrobox
 lldb
@@ -245,9 +241,9 @@ libnotify
 wineWowPackages.stable 
 winetricks
 nerd-fonts.iosevka
+zen-browser.packages.${pkgs.system}.default
 bc
 cliphist
-zen-browser.packages.${pkgs.system}.default
 glib
 gsettings-desktop-schemas
 gcc 
@@ -256,8 +252,6 @@ clang-tools
 gnumake
 cmake
 gdb
-rofi
-kubectl
 vim
 curl 
 wget 
@@ -340,7 +334,8 @@ jack.enable = true;
 
 security.rtkit.enable = true;
 
-
+#allow ports for different stuff 
+networking.firewall.allowedTCPPorts = [ 4000 ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
