@@ -64,7 +64,7 @@ screenshot-path "~/Pictures/Screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png"
 binds {
     Mod+I { spawn "alacritty"; }
     Mod+E { spawn "thunar"; }
-    Mod+Y { spawn "zen"; }
+    Mod+Y { spawn "zen-browser"; }
     Mod+W { spawn "google-chrome-stable"; }
     Mod+Q { spawn "brave" "--force-dark-mode" "--enable-features=WebUIDarkMode"; }
     Mod+O { spawn "~/.config/rofi/launchers/type-2/launcher.sh"; }
