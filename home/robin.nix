@@ -15,6 +15,11 @@ home.homeDirectory = "/home/robin";
     gtk.enable = true;
   };
 
+#variables 
+home.sessionVariables = { 
+  EDITOR = "nvim";
+  VISUAL = "nvim";
+};
 #nix index 
 programs.nix-index = { 
   enable = true;
@@ -86,8 +91,8 @@ programs.fish = {
     nrs = "sudo nixos-rebuild switch --flake /home/robin/nixos#doc";
     nconf = "nvim /home/robin/nixos/configuration.nix";
     nfk = "nvim /home/robin/nixos/flake.nix";
-    hrs = "home-manager switch --flake /home/robin/nixos#robin";
-    hconf = "nvim /home/robin/nixos/home/robin.nix";
+    hrs = "home-manager switch --flake /home/robin/nix#robin";
+    hconf = "nvim /home/robin/nix/home/robin.nix";
   };
   
   interactiveShellInit = ''
